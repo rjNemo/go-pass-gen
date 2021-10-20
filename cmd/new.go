@@ -15,6 +15,7 @@ func init() {
 	rootCommand.AddCommand(newPasswordCommand)
 }
 
+// newPasswordCommand creates a new password. It takes into account the supplied flags.
 var newPasswordCommand = &cobra.Command{Use: "new",
 	Short: "New Password",
 	Long:  "Create a secure password",
@@ -24,6 +25,7 @@ var newPasswordCommand = &cobra.Command{Use: "new",
 		display(password)
 	}}
 
+// display presents information to standard output.
 func display(str string) {
 	red := color.New(color.FgGreen).Add(color.Bold)
 	whiteBackground := red.Add(color.BgWhite)

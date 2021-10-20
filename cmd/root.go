@@ -1,18 +1,18 @@
 package cmd
 
 import (
+	"github.com/spf13/cobra"
 	"log"
 	"os"
-
-	"github.com/spf13/cobra"
 )
 
+// rootCommand initializes the command-line interface application.
 var rootCommand = &cobra.Command{
 	Use:   "passGen",
 	Short: "PassGen",
 	Long:  "Password Generator",
 	Run: func(cmd *cobra.Command, args []string) {
-		log.Println("started")
+		display("** passGen – v0.0.1 **\nUse passGen -h for more information")
 	},
 }
 
