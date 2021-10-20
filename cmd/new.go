@@ -1,9 +1,10 @@
 package cmd
 
 import (
+	"log"
+
 	"github.com/fatih/color"
 	"github.com/spf13/cobra"
-	"log"
 
 	"password-generator/passGen"
 )

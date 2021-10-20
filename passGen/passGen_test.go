@@ -1,10 +1,11 @@
-package main
+package passGen_test
 
 import (
 	"math/rand"
-	"password-generator/passGen"
 	"strings"
 	"testing"
+
+	"password-generator/passGen"
 )
 
 func TestGeneratePasswordWithGivenCharacterNumber(t *testing.T) {
