@@ -1,4 +1,4 @@
-// Package cmd defines the command-line interface to passGen
+// Package cmd defines the command-line interface to passgen
 package cmd
 
 import (
@@ -9,11 +9,11 @@ import (
 
 // rootCommand initializes the command-line interface application.
 var rootCommand = &cobra.Command{
-	Use:   "passGen",
+	Use:   "passgen",
 	Short: "PassGen",
 	Long:  "Password Generator",
 	Run: func(cmd *cobra.Command, args []string) {
-		display("** passGen – v0.0.1 **\nUse passGen -h for more information")
+		display("** passgen – v0.0.1 **\nUse passgen -h for more information")
 	},
 }
 

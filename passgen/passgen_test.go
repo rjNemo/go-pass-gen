@@ -1,18 +1,18 @@
-package passGen_test
+package passgen_test
 
 import (
 	"math/rand"
 	"strings"
 	"testing"
 
-	"github.com/rjNemo/go-pass-gen/passGen"
+	"github.com/rjNemo/go-pass-gen/passgen"
 )
 
 func TestGeneratePasswordWithGivenCharacterNumber(t *testing.T) {
-	opts := passGen.Options{
+	opts := passgen.Options{
 		Length: rand.Intn(12),
 	}
-	pg := passGen.NewPasswordGenerator(opts)
+	pg := passgen.NewPasswordGenerator(opts)
 
 	if password := pg.NewPassword(); len(password) != opts.Length {
 		t.Errorf("Expected a password to be %d characters long, got %d", opts.Length, len(password))
@@ -20,7 +20,7 @@ func TestGeneratePasswordWithGivenCharacterNumber(t *testing.T) {
 }
 
 func TestGeneratePasswordWithDefaultCharacterNumber(t *testing.T) {
-	pg := passGen.NewPasswordGenerator(passGen.Options{})
+	pg := passgen.NewPasswordGenerator(passgen.Options{})
 
 	if password := pg.NewPassword(); len(password) != 6 {
 		t.Errorf("Expected a password to be %d characters long, got %d", 6, len(password))
@@ -28,10 +28,10 @@ func TestGeneratePasswordWithDefaultCharacterNumber(t *testing.T) {
 }
 
 func TestGeneratePasswordWithLettersAndNumbers(t *testing.T) {
-	opts := passGen.Options{
+	opts := passgen.Options{
 		WithNumbers: true,
 	}
-	pg := passGen.NewPasswordGenerator(opts)
+	pg := passgen.NewPasswordGenerator(opts)
 
 	if password := pg.NewPassword(); !containNumbers(password) {
 		t.Errorf("Expected password to contain NUMBERS, got %q", password)
@@ -39,5 +39,5 @@ func TestGeneratePasswordWithLettersAndNumbers(t *testing.T) {
 }
 
 func containNumbers(str string) bool {
-	return strings.ContainsAny(str, passGen.NUMBERS)
+	return strings.ContainsAny(str, passgen.NUMBERS)
 }

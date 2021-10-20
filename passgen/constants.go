@@ -1,4 +1,4 @@
-package passGen
+package passgen
 
 const (
 	// LOWERCASE characters if latin alphabet

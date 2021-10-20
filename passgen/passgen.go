@@ -1,5 +1,5 @@
-// Package passGen creates a random password.
-package passGen
+// Package passgen creates a random password.
+package passgen
 
 import (
 	"math/rand"

@@ -6,7 +6,7 @@ import (
 	"github.com/fatih/color"
 	"github.com/spf13/cobra"
 
-	"github.com/rjNemo/go-pass-gen/passGen"
+	"github.com/rjNemo/go-pass-gen/passgen"
 )
 
 func init() {
@@ -20,7 +20,7 @@ var newPasswordCommand = &cobra.Command{Use: "new",
 	Short: "New Password",
 	Long:  "Create a secure password",
 	Run: func(cmd *cobra.Command, args []string) {
-		pg := passGen.NewPasswordGenerator(passGen.Options{Length: Length, WithNumbers: WithNumbers})
+		pg := passgen.NewPasswordGenerator(passgen.Options{Length: Length, WithNumbers: WithNumbers})
 		password := pg.NewPassword()
 		display(password)
 	}}

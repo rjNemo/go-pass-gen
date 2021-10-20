@@ -1,4 +1,4 @@
-package passGen
+package passgen
 
 type Options struct {
 	// Length of the new password
