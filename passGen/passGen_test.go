@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	"password-generator/passGen"
+	"github.com/rjNemo/go-pass-gen/passGen"
 )
 
 func TestGeneratePasswordWithGivenCharacterNumber(t *testing.T) {

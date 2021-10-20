@@ -6,7 +6,7 @@ import (
 	"github.com/fatih/color"
 	"github.com/spf13/cobra"
 
-	"password-generator/passGen"
+	"github.com/rjNemo/go-pass-gen/passGen"
 )
 
 func init() {

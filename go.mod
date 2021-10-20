@@ -1,4 +1,4 @@
-module password-generator
+module github.com/rjNemo/go-pass-gen
 
 go 1.17
 
