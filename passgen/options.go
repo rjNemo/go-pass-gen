@@ -1,5 +1,6 @@
 package passgen
 
+// Options configures the PasswordGenerator.
 type Options struct {
 	// Length of the new password
 	Length int
