@@ -1,3 +1,4 @@
+// Package passGen creates a random password.
 package passGen
 
 import (

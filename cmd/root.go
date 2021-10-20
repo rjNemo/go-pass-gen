@@ -1,3 +1,4 @@
+// Package cmd defines the command-line interface to passGen
 package cmd
 
 import (
@@ -16,6 +17,7 @@ var rootCommand = &cobra.Command{
 	},
 }
 
+// Execute is where the fun actually happens.
 func Execute() {
 	if err := rootCommand.Execute(); err != nil {
 		log.Println(err)
