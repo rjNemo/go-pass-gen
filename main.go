@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"log"
 	"net/http"
 
@@ -9,8 +10,14 @@ import (
 )
 
 func main() {
-	serveWeb()
-	//cli()
+	web := flag.Bool("web", false, "")
+	flag.Parse()
+
+	if *web {
+		serveWeb()
+		return
+	}
+	cli()
 }
 
 func cli() {
