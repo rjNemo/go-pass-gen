@@ -2,4 +2,10 @@ lint:
 	golint cmd/...
 	golint passgen/...
 
-.PHONY: lint
+run:
+	air
+
+web:
+	cd client && npm run start
+
+.PHONY: lint run

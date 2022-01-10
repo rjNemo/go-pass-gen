@@ -19,7 +19,10 @@ func (s Server) HandleNewPassword(w http.ResponseWriter, r *http.Request) {
 		WithNumbers: params.WithNumbers}).NewPassword()
 
 	render.Status(r, http.StatusAccepted)
-	render.Render(w, r, &PasswordResponse{Password: password})
+	err := render.Render(w, r, &PasswordResponse{Password: password, Success: true})
+	if err != nil {
+		log.Fatalf("error: %q", err)
+	}
 }
 
 type PasswordParams struct {
