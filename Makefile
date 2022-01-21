@@ -13,4 +13,7 @@ run-web:
 web:
 	cd client && npm run start
 
-.PHONY: lint run dev run-web
+test:
+	go test -json  -count=1 ./... -coverpkg=./... -coverprofile coverage.txt -covermode=atomic | gotestfmt && go tool cover -html coverage.txt && rm coverage.txt
+
+.PHONY: lint run dev run-web test
