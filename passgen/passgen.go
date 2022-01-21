@@ -8,13 +8,13 @@ import (
 // PasswordGenerator handles passwords creation.
 type PasswordGenerator struct {
 	characters []rune
-	options    Options
+	options    *Options
 }
 
 // NewPasswordGenerator returns a valid PasswordGenerator given the specified Options.
-func NewPasswordGenerator(opts Options) *PasswordGenerator {
+func NewPasswordGenerator(opts *Options) *PasswordGenerator {
 	pg := &PasswordGenerator{}
-	pg.options = *opts.SetDefaults()
+	pg.options = opts.SetDefaults()
 	pg.characters = pg.shuffleCharacters(opts.WithNumbers)
 	return pg
 }

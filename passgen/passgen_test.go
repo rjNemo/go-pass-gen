@@ -9,8 +9,8 @@ import (
 )
 
 func TestGeneratePasswordWithGivenCharacterNumber(t *testing.T) {
-	opts := passgen.Options{
-		Length: rand.Intn(12),
+	opts := &passgen.Options{
+		Length: rand.Intn(12), // nolint
 	}
 	pg := passgen.NewPasswordGenerator(opts)
 
@@ -20,7 +20,7 @@ func TestGeneratePasswordWithGivenCharacterNumber(t *testing.T) {
 }
 
 func TestGeneratePasswordWithDefaultCharacterNumber(t *testing.T) {
-	pg := passgen.NewPasswordGenerator(passgen.Options{})
+	pg := passgen.NewPasswordGenerator(&passgen.Options{})
 
 	if password := pg.NewPassword(); len(password) != 6 {
 		t.Errorf("Expected a password to be %d characters long, got %d", 6, len(password))
@@ -28,7 +28,7 @@ func TestGeneratePasswordWithDefaultCharacterNumber(t *testing.T) {
 }
 
 func TestGeneratePasswordWithLettersAndNumbers(t *testing.T) {
-	opts := passgen.Options{
+	opts := &passgen.Options{
 		WithNumbers: true,
 	}
 	pg := passgen.NewPasswordGenerator(opts)
