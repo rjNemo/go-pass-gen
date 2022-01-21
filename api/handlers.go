@@ -14,12 +14,11 @@ func (s Server) HandleNewPassword(w http.ResponseWriter, r *http.Request) {
 	if err := render.Bind(r, params); err != nil {
 		log.Fatal(err)
 	}
-
-	password := passgen.NewPasswordGenerator(passgen.Options{Length: params.Length,
-		WithNumbers: params.WithNumbers}).NewPassword()
+	opts := passgen.Options{Length: params.Length, WithNumbers: params.WithNumbers}
+	password := passgen.NewPasswordGenerator(opts.SetDefaults()).NewPassword()
 
 	render.Status(r, http.StatusAccepted)
-	err := render.Render(w, r, &PasswordResponse{Password: password, Success: true})
+	err := render.Render(w, r, &PasswordResponse{Password: password})
 	if err != nil {
 		log.Fatalf("error: %q", err)
 	}
@@ -40,7 +39,7 @@ type PasswordResponse struct {
 	Password string  `json:"password"`
 }
 
-func (resp PasswordResponse) Render(http.ResponseWriter, *http.Request) error {
+func (resp *PasswordResponse) Render(http.ResponseWriter, *http.Request) error {
 	resp.Success = true
 	return nil
 }
