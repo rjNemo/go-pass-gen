@@ -1,15 +1,14 @@
 lint:
-	golint cmd/...
-	golint passgen/...
+	golangci-lint run
 
 dev:
 	air
 
 run:
-	go main.go
+	go run main.go
 
 run-web:
-	go main.go --web=t
+	go run main.go --web=t
 
 web:
 	cd client && npm run start
