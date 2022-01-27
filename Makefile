@@ -1,11 +1,16 @@
+EXECPATH = ./build/dist
+
 lint:
 	golangci-lint run
 
 dev:
 	air
 
-run:
-	go run main.go
+build:
+	go build -o $(EXECPATH) .
+
+run: build
+	$(EXECPATH) new
 
 run-web:
 	go run main.go --web=t
@@ -16,4 +21,4 @@ web:
 test:
 	go test -json  -count=1 ./... -coverpkg=./... -coverprofile coverage.txt -covermode=atomic | gotestfmt && go tool cover -html coverage.txt && rm coverage.txt
 
-.PHONY: lint run dev run-web test
+.PHONY: lint run dev run-web test build

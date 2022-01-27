@@ -11,8 +11,8 @@ type PasswordGenerator struct {
 	options    *Options
 }
 
-// NewPasswordGenerator returns a valid PasswordGenerator given the specified Options.
-func NewPasswordGenerator(opts *Options) *PasswordGenerator {
+// New returns a valid PasswordGenerator given the specified Options.
+func New(opts *Options) *PasswordGenerator {
 	pg := &PasswordGenerator{}
 	pg.options = opts.SetDefaults()
 	pg.characters = pg.shuffleCharacters(opts.WithNumbers)

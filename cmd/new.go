@@ -21,7 +21,7 @@ var newPasswordCommand = &cobra.Command{Use: "new",
 	Long:  "Create a secure password",
 	Run: func(cmd *cobra.Command, args []string) {
 		opts := passgen.Options{Length: Length, WithNumbers: WithNumbers}
-		pg := passgen.NewPasswordGenerator(opts.SetDefaults())
+		pg := passgen.New(opts.SetDefaults())
 		password := pg.NewPassword()
 		display(password)
 	}}

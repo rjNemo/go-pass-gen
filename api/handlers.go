@@ -15,7 +15,7 @@ func (s Server) HandleNewPassword(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
 	}
 	opts := passgen.Options{Length: params.Length, WithNumbers: params.WithNumbers}
-	password := passgen.NewPasswordGenerator(opts.SetDefaults()).NewPassword()
+	password := passgen.New(opts.SetDefaults()).NewPassword()
 
 	render.Status(r, http.StatusAccepted)
 	err := render.Render(w, r, &PasswordResponse{Password: password})
