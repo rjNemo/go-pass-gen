@@ -19,6 +19,6 @@ web:
 	cd client && npm run start
 
 test:
-	go test -json  -count=1 ./... -coverpkg=./... -coverprofile coverage.txt -covermode=atomic | gotestfmt && go tool cover -html coverage.txt && rm coverage.txt
+	go test -json  -count=1 ./... -coverpkg=./... -coverprofile coverage.out -covermode=atomic | gotestfmt && go tool cover -html coverage.outt && rm coverage.outt
 
 .PHONY: lint run dev run-web test build
