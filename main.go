@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"log"
-	"net/http"
 
 	"github.com/rjNemo/go-pass-gen/api"
 	"github.com/rjNemo/go-pass-gen/cmd"
@@ -25,6 +24,5 @@ func cli() {
 }
 
 func serveWeb() {
-	s := api.NewServer()
-	log.Fatal(http.ListenAndServe(":8080", s))
+	log.Fatal(api.NewServer().Start(":8080"))
 }
