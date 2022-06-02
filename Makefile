@@ -7,7 +7,7 @@ dev:
 	air
 
 build:
-	go build -o $(EXECPATH) .
+	go build -ldflags="-s -w" -o $(EXECPATH) .
 
 run: build
 	$(EXECPATH) new
@@ -19,6 +19,6 @@ web:
 	cd client && npm run start
 
 test:
-	go test -json  -count=1 ./... -coverpkg=./... -coverprofile coverage.out -covermode=atomic | gotestfmt # && go tool cover -html coverage.out && rm coverage.out
+	go test -json  -count=1 ./... -coverpkg=./... -coverprofile coverage.out -covermode=atomic | gotestfmt && go tool cover -html coverage.out && rm coverage.out
 
 .PHONY: lint run dev run-web test build
