@@ -9,7 +9,7 @@ COPY go.* .
 RUN go mod download
 
 COPY . .
-RUN go build -ldflags="-s -w" -o dist ./cmd/cli
+RUN go build -ldflags="-s -w" -o dist ./cmd/server
 
 
 FROM alpine:latest
