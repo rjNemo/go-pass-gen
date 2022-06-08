@@ -1,4 +1,5 @@
-EXECPATH = ./build/dist
+EXEC_PATH = ./build/dist
+BUILD_CMD = go build -o $(EXEC_PATH) -ldflags="-s -w"
 
 lint:
 	golangci-lint run
@@ -7,13 +8,16 @@ dev:
 	air
 
 build:
-	go build -ldflags="-s -w" -o $(EXECPATH) .
+	$(BUILD_CMD) ./cmd/cli
 
 run: build
-	$(EXECPATH) new
+	$(EXEC_PATH) new
 
-run-web:
-	go run main.go --web=t
+build-web:
+	$(BUILD_CMD) ./cmd/server
+
+run-web: build-web
+	$(EXEC_PATH)
 
 web:
 	cd client && npm run start
@@ -21,4 +25,7 @@ web:
 test:
 	go test -json  -count=1 ./... -coverpkg=./... -coverprofile coverage.out -covermode=atomic | gotestfmt && go tool cover -html coverage.out && rm coverage.out
 
-.PHONY: lint run dev run-web test build
+clean:
+	rm -rf ./build/
+
+.PHONY: lint run dev run-web test build build-web clean web

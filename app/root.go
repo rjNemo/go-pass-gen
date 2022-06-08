@@ -1,5 +1,5 @@
-// Package cmd defines the command-line interface to passgen
-package cmd
+// Package app defines the command-line interface to passgen
+package app
 
 import (
 	"log"

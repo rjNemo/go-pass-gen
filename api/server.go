@@ -12,13 +12,11 @@ type Server struct {
 	Router *chi.Mux
 }
 
-func NewServer() *Server {
+func New() *Server {
 	s := &Server{Router: chi.NewRouter()}
 	s.Router.Use(middleware.Logger)
 	s.Router.Use(cors.Handler(cors.Options{
-		// AllowedOrigins:   []string{"https://foo.com"}, // Use this to allow specific origin hosts
-		AllowedOrigins: []string{"https://*", "http://*"},
-		// AllowOriginFunc:  func(r *http.Request, origin string) bool { return true },
+		AllowedOrigins:   []string{"https://*", "http://*"},
 		AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		AllowedHeaders:   []string{"Accept", "Authorization", "Content-Type", "X-CSRF-Token"},
 		ExposedHeaders:   []string{"Link"},
@@ -29,6 +27,7 @@ func NewServer() *Server {
 	return s
 }
 
+// ServeHTTP implements Handler for Server
 func (s Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	s.Router.ServeHTTP(w, r)
 }

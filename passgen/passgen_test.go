@@ -34,10 +34,10 @@ func TestGeneratePasswordWithLettersAndNumbers(t *testing.T) {
 	pg := passgen.New(opts)
 
 	if password := pg.NewPassword(); !containNumbers(password) {
-		t.Errorf("Expected password to contain NUMBERS, got %q", password)
+		t.Errorf("Expected password to contain numbers, got %q", password)
 	}
 }
 
 func containNumbers(str string) bool {
-	return strings.ContainsAny(str, passgen.NUMBERS)
+	return strings.ContainsAny(str, "0123456789")
 }

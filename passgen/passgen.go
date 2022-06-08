@@ -5,6 +5,17 @@ import (
 	"math/rand"
 )
 
+const (
+	// lowercase characters in latin alphabet
+	lowercase string = "abcdefghijklmnopqrstuvwxyz"
+
+	// uppercase characters in latin alphabet
+	uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+	// numbers arabic
+	numbers = "0123456789"
+)
+
 // PasswordGenerator handles passwords creation.
 type PasswordGenerator struct {
 	characters []rune
@@ -35,9 +46,9 @@ func (p PasswordGenerator) generatePassword(length int) string {
 
 // shuffleCharacters randomizes the characters.
 func (p PasswordGenerator) shuffleCharacters(withNumbers bool) []rune {
-	letters := []rune(UPPERCASE + LOWERCASE)
+	letters := []rune(uppercase + lowercase)
 	if withNumbers {
-		letters = append(letters, []rune(NUMBERS)...)
+		letters = append(letters, []rune(numbers)...)
 	}
 	rand.Shuffle(len(letters), func(i, j int) { letters[i], letters[j] = letters[j], letters[i] })
 	return letters
